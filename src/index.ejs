@@ -10,7 +10,7 @@
   <!-- If you wish to turn off import-map-overrides for specific environments (prod), uncomment the line below -->
   <!-- More info at https://github.com/single-spa/import-map-overrides/blob/main/docs/configuration.md#domain-list -->
   <!-- <meta name="import-map-overrides-domains" content="denylist:prod.example.com" /> -->
-  
+
   <!-- Shared dependencies go into this import map -->
   <script type="injector-importmap">
     {
@@ -20,8 +20,18 @@
     }
   </script>
 
-  <link rel="preload" href="https://cdn.jsdelivr.net/npm/single-spa@6.0.3/lib/es2015/esm/single-spa.min.js" as="module">
+  <script type="systemjs-importmap">
+    {
+      "imports": {
+        "react": "https://cdn.jsdelivr.net/npm/react@18/umd/react.production.min.js",
+        "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.production.min.js",
+        "react-dom/client": "https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.production.min.js" 
+      }
+    }
+  </script>
 
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/single-spa@6.0.3/lib/es2015/esm/single-spa.min.js" as="module">
+  
   <!-- Add your organization's prod import map URL to this script's src  -->
   <!-- <script type="injector-importmap" src="/importmap.json"></script> -->
 
@@ -29,7 +39,8 @@
   <script type="systemjs-importmap">
     {
       "imports": {
-        "@bytebank/transaction-mfe": "http://localhost:4200/main.js"
+        "@bytebank/transaction-mfe": "//localhost:4200/main.js",
+        "@bytebank/bytebank-mfe": "//localhost:8080/bytebank-bytebank-mfe.js"    
       }
     }
   </script>
